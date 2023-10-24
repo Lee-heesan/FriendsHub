@@ -34,4 +34,9 @@ public class MainController {
         return "main";
     }
 
+    @GetMapping("/event")
+    public String showNewPage() {
+        return "event/event"; // 새로운 페이지로 이동
+    }
+
 }
