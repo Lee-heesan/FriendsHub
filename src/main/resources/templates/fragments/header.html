@@ -20,6 +20,13 @@
                     <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                         <a class="nav-link" href="/admin/items">상품 관리</a>
                     </li>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">다이어트</a></li>
+                        <li><a class="dropdown-item" href="#">질환맞춤식단</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">고단백식단</a></li>
+                        <li> <a class="dropdown-item" href="#">저당식단</a></li>
+                    </ul>
                     <li class="nav-item">
                         <a class="nav-link" href="/event">이벤트</a>
                     </li>
@@ -57,7 +64,7 @@
                 </ul>
                 <form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get"  style=" margin-left:20px;">
                     <input name="searchQuery" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <button id="searchButton" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
         </div>

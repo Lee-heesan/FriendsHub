@@ -10,7 +10,6 @@
       var btn = $("#buttonList li");
       var current=0; //현재 화면에 보이는 슬라이드의 인덱스
       var setIntervalId;
-      btn.eq(current).addClass("act")
 
       btn.click(function(){
           var i = $(this).index();
@@ -58,7 +57,17 @@
          nextEl.stop().css({left:"100%"}).animate({left:"0%"});
          current = n;
       }
+
+        $(".page_info_content1 ul li").on("mouseover", function () {
+          $(".page_info_content1 ul li").css("transform", "scale(1.1)");
+          $(".page_info_content1 ul li").not(this).css("transform", "scale(0.8)"); // 다른 요소를 축소
+        });
+
+        $(".page_info_content1 ul li").on("mouseout", function () {
+            $(".page_info_content1 ul li").css("transform", "scale(1)"); // 마우스를 떼면 원래 크기로 복원
+        });
     });
+
   </script>
 </th:block>
 <!-- 사용자 CSS 추가 -->
@@ -81,6 +90,10 @@
             white-space: nowrap;
             overflow: hidden;
         }
+        .card-title_money{
+             text-align: right;
+             font-weight: bold;
+        }
         a:hover{
             text-decoration:none;
         }
@@ -93,6 +106,9 @@
         a{
              text-decoration: none;
         }
+        .content{
+          margin-top:0px;
+        }
 
         #brandVisual {
               width:100%;
@@ -102,32 +118,41 @@
         #brandVisual ul {
 
         }
-        #brandVisual ul img {
+        #brandVisual ul li {
               position:absolute;
-              top:0;
               width:100%;
-              height:400px;
+              height:385px;
         }
-        #brandVisual ul img.visual_0 {
-             left:0%;
+        #brandVisual ul li.visual_0 {
+              left:0%;
+              background-image: url('https://i.ibb.co/WxXjz2Z/benner1.png');
+              background-size: cover; /* 이미지를 요소에 맞게 확장 또는 축소 */
+              height:100%;
         }
-        #brandVisual ul img.visual_1 {
-             left:100%;
-             background-color:red;
+        #brandVisual ul li.visual_1 {
+              left:100%;
+              background-image: url('https://i.ibb.co/S0xXkXN/benner2.png'); /* 이미지 파일의 경로 설정 */
+              background-size: cover; /* 이미지를 요소에 맞게 확장 또는 축소 */
+              height:100%;
         }
-        #brandVisual ul img.visual_2 {
+        #brandVisual ul li.visual_2 {
               left:200%;
-              background-color:blue;
+              background-image: url('https://i.ibb.co/mN0Tyy8/benner3.png');
+              background-size: cover; /* 이미지를 요소에 맞게 확장 또는 축소 */
+              height:100%;
         }
-        #brandVisual ul img.visual_3 {
+        #brandVisual ul li.visual_3 {
               left:300%;
-              background-color:green;
+              background-image: url('https://i.ibb.co/L98cCg1/benner4.png'); /* 이미지 파일의 경로 설정 */
+              background-size: cover; /* 이미지를 요소에 맞게 확장 또는 축소 */
+              height:100%;
         }
 
 
         #buttonList{
             position:absolute;
             margin-left: 44%;
+            margin-top: 10px;
         }
         #buttonList li{
                display: inline-block;
@@ -135,9 +160,9 @@
                float:left;
                margin-right:10px;
                border-radius:50%;
-               width:15px;
-               height:15px;
-               background-color:rgb(051,153,051);
+               width:13px;
+               height:13px;
+               background-color: brown;
         }
 
         #buttonList li.act{opacity: 0.8;}
@@ -149,12 +174,143 @@
              text-indent:-9999px;
         }
 
+        #category-container {
+            text-align: center;
+            margin: 20px 0;
+            background-color:#f5f9fc;
+            padding-top:15px;
+        }
+
+        .category-item {
+            display: inline-block;
+            border-radius: 50%; /* 원 모양을 위해 반지름을 50%로 설정 */
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            text-decoration: none;
+            overflow: hidden; /* 원 모양을 유지하기 위해 내부 컨텐츠를 숨김 */
+            position: relative;
+        }
+
+        .category-item img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block; /* 이미지를 중앙 정렬하기 위해 display: block; 설정 */
+            margin: 0 auto; /* 이미지를 수평 가운데 정렬하기 위해 margin 설정 */
+        }
+
+        .category-label {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px; /* 이미지 아래에 간격 추가 */
+        }
+
+
+
+        #page_info {
+            display: flex;
+            height:400px;
+            width:100%;
+            margin-top: 50px;
+            margin-bottom:100px;
+            background-color: #f5f9fc;
+            border: 2px solid #d1d1d1;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+
+        }
+        .page_info_content1{
+            height:200px;
+            width:80%;
+        }
+
+        .page_info_content1 ul {
+            position:relative;
+        }
+        .page_info_content1 ul li {
+            width:300px;
+            height:350px;
+            display: inline-block;
+            background-color: #ccc;
+            line-height: 100px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .page_info_content1 ul li:hover {
+            transform: scale(1.1);
+            background-color: #ff0000;
+            color: #fff;
+        }
+
+        .page_info_content1 ul li:nth-child(1) {
+              background-image: url('https://i.ibb.co/KwZd8ZW/image2.png'); /* 이미지 파일의 경로 설정 */
+              background-size: cover; /* 이미지를 요소에 맞게 확장 또는 축소 */
+              background-position: center center;
+              border-radius:10%
+        }
+        .page_info_content1 ul li:nth-child(2) {
+              background-image: url('https://i.ibb.co/88X4Dwx/12122-removebg-preview.png'); /* 이미지 파일의 경로 설정 */
+              background-size: cover; /* 이미지를 요소에 맞게 확장 또는 축소 */
+              background-position: center center;
+              border-radius:10%
+        }
+        .page_info_content1 ul li:nth-child(3) {
+              background-image: url('https://i.ibb.co/12yzhvk/image3.png'); /* 이미지 파일의 경로 설정 */
+              background-size: cover; /* 이미지를 요소에 맞게 확장 또는 축소 */
+              background-position: center center;
+              border-radius:10%
+        }
+
+        .page_info_content2{
+              margin-left:50px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+        }
+
+
+        .items{
+          margin-top:50px;
+          padding-top:50px;
+        }
 
         .row {
-          margin-top:50px;
           margin-left:100px;
           margin-right:100px;
         }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .card-title_money {
+            font-size: 1.5rem;
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        .card {
+            border: 2px solid #d1d1d1;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card-img-top {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+
+
     </style>
 </th:block>
 
@@ -165,10 +321,10 @@
       <div class="carousel-item active item">
         <div id="brandVisual">
           <ul>
-            <a href="#"><img class="visual_0" img src="/images/benner1.png"   alt="logo"></a>
-            <a href="#"><img class="visual_1" img src="/images/benner1.png"  alt="logo"></a>
-            <a href="#"><img class="visual_2" img src="/images/benner1.png"  alt="logo"></a>
-            <a href="#"><img class="visual_3" timg src="/images/benner1.png"  alt="logo"></a>
+            <a href="/event#section1"><li class="visual_0"></li></a>
+            <a href="/event#section2"><li class="visual_1"></li></a>
+            <a href="/event#section3"><li class="visual_2"></li></a>
+            <a href="/event"><li class="visual_3"></li></a>
           </ul>
         </div>
         <ul id="buttonList">
@@ -180,22 +336,58 @@
       </div>
     </div>
   </div>
+  <div th:if="${#strings.isEmpty(itemSearchDto.searchQuery)}" id="category-container">
+    <a href="#" class="category-item">
+      <img src="https://health.chosun.com/site/data/img_dir/2019/12/20/2019122002474_0.jpg" alt="다이어트">
+      <div class="category-label">다이어트</div>
+    </a>
+    <a href="#" class="category-item">
+      <img src="https://cdn.aitimes.kr/news/photo/201911/13994_15544_247.jpg" alt="질환맞춤식단">
+      <div class="category-label">질환맞춤식단</div>
+    </a>
+    <a href="#" class="category-item">
+      <img src="https://health.chosun.com/site/data/img_dir/2023/06/23/2023062300944_0.jpg" alt="고단백식단">
+      <div class="category-label">고단백식단</div>
+    </a>
+    <a href="#" class="category-item">
+      <img src="https://cdn.kormedi.com/wp-content/uploads/2023/02/gettyimages-1322887069-700x467.jpg.webp" alt="저당식단">
+      <div class="category-label">저당식단</div>
+    </a>
+  </div>
+
+  <div th:if="${#strings.isEmpty(itemSearchDto.searchQuery)}" id="page_info">
+    <div class="page_info_content1">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="page_info_content2">
+      <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="logo" height="150px;"></a>
+    </div>
+  </div>
+
+
 
   <input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">
   <div th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}" class="center">
+    <hr>
     <p class="h3 font-weight-bold" th:text="${itemSearchDto.searchQuery} + '검색 결과'"></p>
+    <hr>
   </div>
 
+  <div class="items">
   <div class="row">
     <th:block th:each="item, status: ${items.getContent()}">
-      <div class="col-md-4 margin">
+      <div class="col-md-4 mb-4">
         <div class="card">
-          <a th:href="'/item/' +${item.id}" class="text-dark">
-            <img th:src="${item.imgUrl}" class="card-img-top" th:alt="${item.itemNm}" height="400">
+          <a th:href="'/item/' + ${item.id}" class="text-dark">
+            <img th:src="${item.imgUrl}" class="card-img-top" th:alt="${item.itemNm}">
             <div class="card-body">
-              <h4 class="card-title">[[${item.itemNm}]]</h4>
-              <p class="card-text">[[${item.itemDetail}]]</p>
-              <h3 class="card-title text-danger">[[${item.price}]]원</h3>
+              <h5 class="card-title">[[${item.itemNm}]]</h5>
+              <br><br>
+              <h3 class="card-title_money">[[${item.price}]]원</h3>
             </div>
           </a>
         </div>
@@ -203,26 +395,26 @@
     </th:block>
   </div>
 
-  <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
-    <ul class="pagination justify-content-center">
+    <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
+      <ul class="pagination justify-content-center">
 
-      <li class="page-item" th:classappend="${items.number eq 0}?'disabled':''">
-        <a th:href="@{'/' + '?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number-1}}" aria-label='Previous' class="page-link">
-          <span aria-hidden='true'>Previous</span>
-        </a>
-      </li>
+        <li class="page-item" th:classappend="${items.number eq 0}?'disabled':''">
+          <a th:href="@{'/' + '?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number-1}}" aria-label='Previous' class="page-link">
+            <span aria-hidden='true'><</span>
+          </a>
+        </li>
 
-      <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq page-1}?'active':''">
-        <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
-      </li>
+        <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq page-1}?'active':''">
+          <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
+        </li>
 
-      <li class="page-item" th:classappend="${items.number+1 ge items.totalPages}?'disabled':''">
-        <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number+1}}" aria-label='Next' class="page-link">
-          <span aria-hidden='true'>Next</span>
-        </a>
-      </li>
+        <li class="page-item" th:classappend="${items.number+1 ge items.totalPages}?'disabled':''">
+          <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number+1}}" aria-label='Next' class="page-link">
+            <span aria-hidden='true'>></span>
+          </a>
+        </li>
 
-    </ul>
+      </ul>
+    </div>
   </div>
-
 </div>
