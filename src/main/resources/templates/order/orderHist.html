@@ -87,27 +87,21 @@
 
 <div layout:fragment="content" class="content-mg">
 
-    <h2 class="mb-4">
+    <h2 class="mb-4 text-center">
         구매 이력
     </h2>
+    <hr>
 
     <div th:each="order : ${orders.getContent()}">
 
         <div class="d-flex mb-3 align-self-center">
-            <h4 th:text="${order.orderDate} + ' 주문'"></h4>
-            <div class="ml-3">
-                <th:block th:if="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">
-                    <button type="button" class="btn btn-outline-secondary" th:value="${order.orderId}" onclick="cancelOrder(this.value)">주문취소</button>
-                </th:block>
-                <th:block th:unless="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">
-                    <h4>(취소 완료)</h4>
-                </th:block>
-            </div>
+            <h4 th:text="' 주문일시 :'+${order.orderDate} "></h4>
         </div>
+
         <div class="card d-flex">
             <div th:each="orderItem : ${order.orderItemDtoList}" class="d-flex mb-3">
                 <div class="repImgDiv">
-                    <img th:src="${orderItem.imgUrl}" class = "rounded repImg" th:alt="${orderItem.itemNm}">
+                    <img th:src="${orderItem.imgUrl}" class = "rounded repImg" th:alt="${orderItem.itemNm}" style="height: 170px; width: 190px;">
                 </div>
                 <div class="align-self-center w-75">
                     <span th:text="${orderItem.itemNm}" class="fs24 font-weight-bold"></span>
@@ -116,12 +110,29 @@
                         <span th:text="${orderItem.count} +'개'"></span>
                     </div>
                 </div>
+                <span th:if="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}" class="badge badge-primary mgb-15" style="height: 20px;margin-top: 50px;">
+                    배송중
+                </span>
+                <span th:unless="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}"  class="badge btn-danger mgb-15" style="height: 20px;margin-top: 50px;">
+                    배송 완료
+            </span>
+            </div>
+            <div class="ml-auto mr-2"> <!-- 변경된 부분 -->
+                <th:block th:if="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" th:value="${order.orderId}" onclick="cancelOrder(this.value)">
+                        <span class="mr-1">주문취소</span>
+                        <i class="fas fa-times"></i> <!-- Font Awesome의 아이콘 사용 예시 -->
+                    </button>
+                </th:block>
+                <th:block th:unless="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">
+                    <h4 class="text-muted">(취소 완료)</h4>
+                </th:block>
             </div>
         </div>
 
     </div>
         <br><br>
-    <div th:with="start=${(orders.number/maxPage)*maxPage + 1}, end=(${(orders.totalPages == 0) ? 1 : (start + (maxPage - 1) < orders.totalPages ? start + (maxPage - 1) : orders.totalPages)})" >
+    <div th:with="start=${(orders.number/maxPage)*maxPage + 1}, end=(${(orders. totalPages == 0) ? 1 : (start + (maxPage - 1) < orders.totalPages ? start + (maxPage - 1) : orders.totalPages)})" >
         <ul class="pagination justify-content-center">
 
             <li class="page-item" th:classappend="${orders.number eq 0}?'disabled':''">

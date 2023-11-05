@@ -45,6 +45,9 @@ public class ItemController {
             return "item/itemForm";
         }
 
+        System.out.println("IN2");
+        System.out.println(itemFormDto.getId());
+
         if(itemImgFileList.get(0).isEmpty() && itemFormDto.getId() == null){
             model.addAttribute("errorMessage", "첫번째 상품 이미지는 필수 입력 값 입니다.");
             return "item/itemForm";

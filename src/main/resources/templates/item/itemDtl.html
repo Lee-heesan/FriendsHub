@@ -129,16 +129,27 @@
         }
         .repImg{
             width:100%;
-            height:400px;
+            height:600px;
         }
         .wd50{
             height:auto;
             width:50%;
         }
+
+        #countForm{
+             margin-top:260px;
+
+        }
+        #payment{
+
+        }
+        #buttonList {
+            margin-top:10px;
+        }
     </style>
 </th:block>
 
-<div layout:fragment="content" style="margin-left:25%;margin-right:25%">
+<div layout:fragment="content" >
 
     <input type="hidden" id="itemId" th:value="${item.id}">
 
@@ -161,20 +172,19 @@
                     <input type="hidden" th:value="${item.price}" id="price" name="price">
                     <span th:text="${item.price}"></span>원
                 </div>
-                <div class="input-group w-50">
+                <div class="input-group w-50" id="countForm">
                     <div class="input-group-prepend">
                         <span class="input-group-text">수량</span>
                     </div>
                     <input type="number" name="count" id="count" class="form-control" value="1" min="1">
                 </div>
             </div>
-            <hr class="my-4">
 
-            <div class="text-right mgt-50">
+            <div class="text-right " id="payment">
                 <h5>결제 금액</h5>
                 <h3 name="totalPrice" id="totalPrice" class="font-weight-bold"></h3>
             </div>
-            <div th:if="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="text-right">
+            <div th:if="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" id="buttonList" class="text-right">
                 <button type="button" class="btn btn-light border border-primary btn-lg" onclick="addCart()">장바구니 담기</button>
                 <button type="button" class="btn btn-primary btn-lg" onclick="order()">주문하기</button>
             </div>
