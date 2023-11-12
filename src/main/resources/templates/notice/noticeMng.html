@@ -88,6 +88,10 @@
             <div  sec:authorize="hasAnyAuthority('ROLE_USER')">
               <a th:href="'/notice/noticeDtl/'+${notice.id}" th:text="${notice.noticeNm}"></a>
             </div>
+            <div sec:authorize="!hasAnyAuthority('ROLE_ADMIN', 'ROLE_USER')">
+              <!-- ROLE_ADMIN 또는 ROLE_USER 역할을 가진 사용자에게 링크를 보이지 않음 -->
+              <a th:href="'/notice/noticeDtl/' + ${notice.id}" th:text="${notice.noticeNm}"></a>
+            </div>
           </td>
           <td th:text="${notice.writeName}"></td>
           <td th:text="${notice.regTime}"></td>

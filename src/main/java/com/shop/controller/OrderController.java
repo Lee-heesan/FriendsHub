@@ -78,4 +78,13 @@ public class OrderController {
         return new ResponseEntity<Long>(orderId, HttpStatus.OK);
     }
 
+
+
+    @GetMapping(value = {"/orders/write"})
+    public String orderList(){
+
+        return "order/orderWrite";
+    }
+
+
 }

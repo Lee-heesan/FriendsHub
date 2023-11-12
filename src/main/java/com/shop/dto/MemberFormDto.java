@@ -1,8 +1,11 @@
 package com.shop.dto;
 
+import com.shop.entity.Member;
+import com.shop.entity.Notice;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+import org.modelmapper.ModelMapper;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -23,5 +26,9 @@ public class MemberFormDto {
 
     @NotEmpty(message = "주소는 필수 입력 값입니다.")
     private String address;
+
+    @NotEmpty(message = "전화번호는 필수 입력 값입니다.")
+    private String phoneNumber;
+
 
 }

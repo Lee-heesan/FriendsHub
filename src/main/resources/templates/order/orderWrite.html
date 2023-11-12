@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        // JavaScript 코드를 추가할 수 있습니다.
+
+         function orders(){
+             location.href='/orders';
+         }
+
+         function oninputPhone(target) {
+                 target.value = target.value
+                     .replace(/[^0-9]/g, '')
+                     .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
+         }
+    </script>
+</th:block>
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        /* 사용자 정의 CSS 스타일을 추가할 수 있습니다. */
+        .order-form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-title {
+            margin-bottom: 50px;
+        }
+
+        .form-label {
+            margin-bottom: 10px;
+        }
+
+        .form-input {
+            padding: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 100%;
+        }
+
+        #buyItem {
+            margin:10px;
+        }
+
+        #userInfo {
+            width:70%;
+            display: flex;
+            flex-direction: column;
+            margin:10px;
+            padding:10px;
+        }
+
+        #customerName, #contactNumber, #zipCode {
+            width:60%;
+        }
+
+        .submit-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 10%;
+            align-self: flex-end; /* 오른쪽 하단에 위치 */
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</th:block>
+
+<div layout:fragment="content">
+    <h1 class="order-title">주문서 작성</h1>
+    <div class="order-form" action="/orders" method="post"> <!-- 주문을 제출할 URL로 변경해야 합니다. -->
+        <div id= "buyItem" style="display: flex;">
+            <img src="/images/item/a03ea7d2-86e0-4d0b-a9ba-60902a2a483f.jpg" alt="구입상품" id="imagePreview" style="width: 250px; height: 200px; ">
+            <!-- https://i.ibb.co/Lg2YY2x/test-img1.png-->
+            <!--다이어트 도시락 2-->
+            <div style="margin-left: 30px;">
+                <h4>제품명 : 오븐 구이 닭가슴살 식단 </h4>
+                <p style="margin-top:130px;">수량: 1<p>
+            </div>
+        </div>
+
+        <div id="userInfo">
+            <label class="form-label" for="customerName">고객명:</label>
+            <input class="form-input" type="text" id="customerName" name="customerName" value="이희산"required>
+
+            <label class="form-label" for ="contactNumber">연락처:</label>
+            <input class="form-input" type="tel" id="contactNumber" name="contactNumber" value="010-3333-3333" oninput="oninputPhone(this)" required>
+
+            <label class="form-label" for="zipCode">우편번호:</label>
+            <input class="form-input" id="zipCode" name="zipCode" required></input>
+
+            <label class="form-label" for="shippingAddress">배송 주소:</label>
+            <input class="form-input" id="shippingAddress" name="shippingAddress" required></input>
+
+            <label class="form-label" for="AddressInfo">배송 상세 주소:</label>
+            <textarea class="form-input" id="AddressInfo" name="AddressInfo" required></textarea>
+
+            <label class="form-label" for="specialInstructions">배송 요청 사항:</label>
+            <textarea class="form-input" id="specialInstructions" name="specialInstructions"></textarea>
+        </div>
+
+        <input class="submit-button" type="submit" value="주문 제출" onclick="orders()">
+    </div>
+</div>
+</html>

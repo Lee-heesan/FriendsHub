@@ -57,4 +57,10 @@ public class MemberController {
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
         return "/member/memberLoginForm";
     }
+
+
+    @GetMapping (value= "/myPage")
+    public String showMyPage() {
+        return "/myPage/myPage"; // 새로운 페이지로 이동
+    }
 }

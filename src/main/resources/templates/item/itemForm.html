@@ -114,6 +114,25 @@
         </div>
         <p th:if="${#fields.hasErrors('itemDetail')}" th:errors="*{itemDetail}" class="fieldError">Incorrect data</p>
 
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">식단 종류</span>
+                <select name="language" style="width:300px;">
+
+                    <option value="java" selected> 다이어트
+
+                    <option value="css"> 질환맞춤식단
+
+                    <option value="html"> 고단백 식단
+
+                    <option value="c"> 저당 식단
+
+                    <option value="c"> 기타 식단
+
+                </select>
+            </div>
+        </div>
+
         <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}">
             <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}">
                 <div class="custom-file img-div">
