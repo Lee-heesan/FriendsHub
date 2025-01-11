@@ -1,0 +1,212 @@
+.carousel-inner > .item {
+    height: 450px;
+}
+.margin {
+    margin-bottom: 30px;
+}
+.banner {
+    height: 300px;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.card-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.card-title_money {
+    text-align: right;
+    font-weight: bold;
+}
+a:hover {
+    text-decoration: none;
+}
+.center {
+    text-align: center;
+}
+ul, li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+.content {
+    margin-top: 0px;
+}
+#brandVisual {
+    width: 100%;
+    height: 400px;
+}
+#brandVisual ul {
+}
+#brandVisual ul li {
+    position: absolute;
+    width: 100%;
+    height: 385px;
+}
+#brandVisual ul li.visual_0 {
+    left: 0%;
+    background-image: url('https://i.ibb.co/WxXjz2Z/benner1.png');
+    background-size: cover;
+    height: 100%;
+}
+#brandVisual ul li.visual_1 {
+    left: 100%;
+    background-image: url('https://i.ibb.co/S0xXkXN/benner2.png');
+    background-size: cover;
+    height: 100%;
+}
+#brandVisual ul li.visual_2 {
+    left: 200%;
+    background-image: url('https://i.ibb.co/mN0Tyy8/benner3.png');
+    background-size: cover;
+    height: 100%;
+}
+#brandVisual ul li.visual_3 {
+    left: 300%;
+    background-image: url('https://i.ibb.co/L98cCg1/benner4.png');
+    background-size: cover;
+    height: 100%;
+}
+#buttonList {
+    position: absolute;
+    margin-left: 44%;
+    margin-top: 10px;
+}
+#buttonList li {
+    display: inline-block;
+    cursor: pointer;
+    float: left;
+    margin-right: 10px;
+    border-radius: 50%;
+    width: 13px;
+    height: 13px;
+    background-color: brown;
+}
+#buttonList li.act {
+    opacity: 0.8;
+}
+#buttonList a {
+    display: block;
+    height: 15px;
+    font-size: 12px;
+    text-indent: -9999px;
+}
+#category-container {
+    text-align: center;
+    margin: 20px 0;
+    background-color: #f5f9fc;
+    padding-top: 15px;
+}
+.category-item {
+    display: inline-block;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    text-decoration: none;
+    overflow: hidden;
+    position: relative;
+}
+.category-item img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+.category-label {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+}
+#page_info {
+    display: flex;
+    height: 400px;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    background-color: #f5f9fc;
+    border: 2px solid #d1d1d1;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+.page_info_content1 {
+    height: 200px;
+    width: 80%;
+}
+.page_info_content1 ul {
+    position: relative;
+}
+.page_info_content1 ul li {
+    width: 300px;
+    height: 350px;
+    display: inline-block;
+    background-color: #ccc;
+    line-height: 100px;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+.page_info_content1 ul li:hover {
+    transform: scale(1.1);
+    background-color: #ff0000;
+    color: #fff;
+}
+.page_info_content1 ul li:nth-child(1) {
+    background-image: url('https://i.ibb.co/KwZd8ZW/image2.png');
+    background-size: cover;
+    background-position: center center;
+    border-radius: 10%;
+}
+.page_info_content1 ul li:nth-child(2) {
+    background-image: url('https://i.ibb.co/88X4Dwx/12122-removebg-preview.png');
+    background-size: cover;
+    background-position: center center;
+    border-radius: 10%;
+}
+.page_info_content1 ul li:nth-child(3) {
+    background-image: url('https://i.ibb.co/12yzhvk/image3.png');
+    background-size: cover;
+    background-position: center center;
+    border-radius: 10%;
+}
+.page_info_content2 {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.items {
+    margin-top: 50px;
+    padding-top: 50px;
+}
+.row {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.card-title_money {
+    font-size: 1.5rem;
+}
+.card-body {
+    text-align: center;
+}
+.card {
+    border: 2px solid #d1d1d1;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+.card-img-top {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}

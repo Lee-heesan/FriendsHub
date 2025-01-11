@@ -1,0 +1,28 @@
+.content-mg {
+            margin-left: 15%;
+            margin-right: 15%;
+            margin-top: 2%;
+            margin-bottom: 100px;
+        }
+        .center-content {
+            text-align: center;
+            border: 2px solid #ccc; /* Change the border color to gray (#ccc) */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Add padding for space inside the border */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a shadow */
+        }
+        .repImgDiv {
+            margin-right: 15px;
+            margin-left: 15px;
+            height: auto;
+        }
+        .repImg {
+            height: 170px;
+            width: 190px;
+        }
+        .fs18 {
+            font-size: 18px;
+        }
+        .fs24 {
+            font-size: 24px;
+        }

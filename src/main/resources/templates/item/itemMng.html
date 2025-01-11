@@ -5,37 +5,12 @@
 
 <!-- 사용자 스크립트 추가 -->
 <th:block layout:fragment="script">
-    <script th:inline="javascript">
-
-        $(document).ready(function(){
-            $("#searchBtn").on("click",function(e) {
-                e.preventDefault();
-                page(0);
-            });
-        });
-
-        function page(page){
-            var searchDateType = $("#searchDateType").val();
-            var searchSellStatus = $("#searchSellStatus").val();
-            var searchBy = $("#searchBy").val();
-            var searchQuery = $("#searchQuery").val();
-
-            location.href="/admin/items/" + page + "?searchDateType=" + searchDateType
-            + "&searchSellStatus=" + searchSellStatus
-            + "&searchBy=" + searchBy
-            + "&searchQuery=" + searchQuery;
-        }
-
-    </script>
+    <script src="/js/item/itemMng.js"></script>
 </th:block>
 
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
-    <style>
-        select{
-            margin-right:10px;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/item/itemMng.css">
 </th:block>
 
 <div layout:fragment="content">

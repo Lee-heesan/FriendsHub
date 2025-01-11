@@ -5,30 +5,13 @@
 
     <!-- 사용자 CSS 추가 -->
     <th:block layout:fragment="css">
-      <style>
-            .fieldError {
-                color: #bd2130;
-            }
-        </style>
+        <link rel="stylesheet" href="/css/member/memberForm.css">
     </th:block>
 
     <!-- 사용자 스크립트 추가 -->
     <th:block layout:fragment="script">
 
-      <script th:inline="javascript">
-            $(document).ready(function(){
-                var errorMessage = [[${errorMessage}]];
-                if(errorMessage != null){
-                    alert(errorMessage);
-                }
-            });
-
-             function oninputPhone(target) {
-                  target.value = target.value
-                      .replace(/[^0-9]/g, '')
-                      .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
-              }
-        </script>
+      <script src="/js/member/memberForm.js"></script>
 
     </th:block>
 
