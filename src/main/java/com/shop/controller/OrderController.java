@@ -1,7 +1,6 @@
 package com.shop.controller;
 
 import com.shop.dto.OrderDto;
-//import com.shop.dto.OrderHistDto;
 import com.shop.dto.OrderHistDto;
 import com.shop.service.OrderService;
 import javax.validation.Valid;
@@ -57,7 +56,7 @@ public class OrderController {
     @GetMapping(value = {"/orders", "/orders/{page}"})
     public String orderHist(@PathVariable("page") Optional<Integer> page, Principal principal, Model model){
 
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 4);
+        Pageable pageable = PageRequest.of(page.isPresent   () ? page.get() : 0, 4);
         Page<OrderHistDto> ordersHistDtoList = orderService.getOrderList(principal.getName(), pageable);
 
         model.addAttribute("orders", ordersHistDtoList);
