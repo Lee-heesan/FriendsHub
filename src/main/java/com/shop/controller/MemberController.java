@@ -2,8 +2,12 @@ package com.shop.controller;
 
 import com.shop.dto.MemberFormDto;
 import com.shop.entity.Member;
+import com.shop.security.CustomUserDetails;
 import com.shop.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @RequestMapping("/members")
 @Controller
@@ -58,9 +63,14 @@ public class MemberController {
         return "/member/memberLoginForm";
     }
 
-
     @GetMapping (value= "/myPage")
-    public String showMyPage() {
-        return "/myPage/myPage"; // 새로운 페이지로 이동
+    public String showMyPage(Principal principal, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+
+        Member member = userDetails.getMember();
+        model.addAttribute("user", member);
+
+        return "/myPage/myPage";
     }
 }
