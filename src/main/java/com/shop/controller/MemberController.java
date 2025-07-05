@@ -1,6 +1,8 @@
 package com.shop.controller;
 
+import com.shop.dto.MemberEditDTO;
 import com.shop.dto.MemberFormDto;
+import com.shop.dto.NoticeFormDto;
 import com.shop.entity.Member;
 import com.shop.security.CustomUserDetails;
 import com.shop.service.MemberService;
@@ -64,7 +66,7 @@ public class MemberController {
     }
 
     @GetMapping (value= "/myPage")
-    public String showMyPage(Principal principal, Model model) {
+    public String showMyPage(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
 
@@ -73,4 +75,38 @@ public class MemberController {
 
         return "/myPage/myPage";
     }
+
+    @GetMapping (value= "/edit")
+    public String showEditMember(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+
+        Member member = userDetails.getMember();
+        model.addAttribute("user", member);
+
+        return "/myPage/myPageEdit";
+    }
+
+
+    @PostMapping(value = "/edit")
+    public String editMember(@Valid MemberEditDTO memberEditDTO, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "/myPage/myPage";
+        }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        Member member = userDetails.getMember();
+
+        try {
+            memberService.updateMember(member, memberEditDTO);
+
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "회원 정보 수정 중 오류가 발생했습니다.");
+            return "/myPage/myPage";
+        }
+
+        return "redirect:/";
+    }
+
 }

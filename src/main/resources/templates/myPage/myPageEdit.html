@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta charset="UTF-8">
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" href="/css/myPage/myPage.css">
+    </th:block>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+
+<div layout:fragment="content">
+    <div class="member-container">
+        <h2>마이페이지 수정</h2>
+        <hr>
+
+        <form method="POST" th:action="@{'/members/edit'}">
+            <div class="form-group">
+                <label>이름</label>
+                <input type="text" th:value="${user.name}" name="name" readonly />
+            </div>
+            <div class="form-group">
+                <label>이메일</label>
+                <input type="text" th:value="${user.email}" name="email"/>
+            </div>
+            <div class="form-group">
+                <label>주소</label>
+                <input type="text" th:value="${user.address}" name="address"/>
+            </div>
+            <div class="form-group">
+                <label>전화번호</label>
+                <input type="text" th:value="${user.phoneNumber}" name="phoneNumber"/>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">완료</button>
+            </div>
+        </form>
+    </div>
+</div>
+</html>

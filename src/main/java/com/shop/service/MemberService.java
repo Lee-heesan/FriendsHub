@@ -1,5 +1,6 @@
 package com.shop.service;
 
+import com.shop.dto.MemberEditDTO;
 import com.shop.dto.MemberFormDto;
 import com.shop.entity.Member;
 import com.shop.repository.MemberRepository;
@@ -29,6 +30,16 @@ public class MemberService implements UserDetailsService {
             throw new IllegalStateException("이미 가입된 회원입니다.");
         }
     }
+
+    public void updateMember(Member member, MemberEditDTO memberEditDTO) {
+        member.setName(memberEditDTO.getName());
+        member.setEmail(memberEditDTO.getEmail());
+        member.setAddress(memberEditDTO.getAddress());
+        member.setPhoneNumber(memberEditDTO.getPhoneNumber());
+
+        memberRepository.save(member);
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{

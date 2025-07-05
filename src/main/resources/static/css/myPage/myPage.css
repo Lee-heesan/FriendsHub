@@ -5,6 +5,8 @@
     background-color: #f9f9f9;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: 550px;
 }
 
 .member-container h2 {
@@ -34,4 +36,8 @@
     color: #333;
 }
 
-
+.member-container button {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+}
