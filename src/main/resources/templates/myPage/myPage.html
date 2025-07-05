@@ -9,14 +9,30 @@
     </th:block>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
+
 <div layout:fragment="content">
     <div class="member-container">
+        <h2>마이페이지</h2>
         <hr>
-          <dd>
-                <input type="text" id="MTO_POST" name="MTO_POST" value="" style="text-align:Center;width:25%" onkeydown="if(event.keyCode == 46 || event.keyCode == 8) {this.value = '';document.getElementById('MTO_ADD1').value = ''; }" onfocus="javascript:{this.select();}">
-                &nbsp;
-                <button type="button" id="btnMTO_POST" name="btnMTO_POST" style="margin-left:0px" class="itsButton popsearch" onclick="javascript:{onKakaoJusoClick(this);}">
-                      ...</button>&nbsp;<input type="text" id="MTO_ADD1" name="MTO_ADD1" value="" style="width:62%" readonly="readOnly"></dd>
+        <div class="form-group">
+            <label>이름</label>
+            <input type="text" th:value="${user.name}" readonly />
+        </div>
+        <div class="form-group">
+            <label>이메일</label>
+            <input type="text" th:value="${user.email}" readonly />
+        </div>
+        <div class="form-group">
+            <label>주소</label>
+            <input type="text" th:value="${user.address}" readonly />
+        </div>
+        <div class="form-group">
+            <label>전화번호</label>
+            <input type="text" th:value="${user.phoneNumber}" readonly />
+        </div>
+        <a href="#" th:href="@{'/members/edit'}">
+            <button type="button" class="btn btn-primary">수정</button>
+        </a>
     </div>
 </div>
 </html>

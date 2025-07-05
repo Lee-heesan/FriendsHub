@@ -40,7 +40,7 @@ public class NoticeController {
 
 
         if(bindingResult.hasErrors()){
-            model.addAttribute("errorMessage", "a다시 시도 해주세요");
+            model.addAttribute("errorMessage", "다시 시도 해주세요");
             return "notice/noticeForm";
         }
 
